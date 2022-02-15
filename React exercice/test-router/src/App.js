@@ -4,27 +4,47 @@ import Docs from './component/Docs';
 import Tutorial from './component/Tutorials';
 import Community from './component/Community';
 import Menu from './component/Menu';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Error from './component/Error';
+import React from 'react'
 
-function App() {
-  return (
-    <BrowserRouter >
-      <Menu />
 
-      <Switch>
 
-        <Route exact path="/" component={Docs} />
-        <Route path="/Tutorial" component={Tutorial} />
-        <Route strict path="/Community" component={Community} />
-        <Route  component={Error} />
+class App extends React.Component {
 
-      </Switch>
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       underConst:{
+         Docs: false,
+         Tutorial: true,
+         Community: false,
+       }
+    }
+  }
 
-     
+  render(){
 
-    </BrowserRouter>
-  );
+    return (
+      <BrowserRouter >
+        <Menu />
+  
+        <Switch>
+  
+          <Route exact path="/" component={Docs} />
+          <Route path="/Tutorial" component={Tutorial} />
+          
+          <Route strict path="/Community" component={Community} />
+          <Route  component={Error} />
+  
+        </Switch>
+  
+       
+  
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
