@@ -6,7 +6,8 @@ import Community from './component/Community';
 import Menu from './component/Menu';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Error from './component/Error';
-import React from 'react'
+import React from 'react';
+import Profile from './component/Profile';
 
 
 
@@ -36,6 +37,7 @@ class App extends React.Component {
           <Route path="/Tutorial" component={Tutorial} />
           
           <Route strict path="/Community" component={Community} />
+          <Route path="/users/:profileId" component={Profile}/>
           <Route  component={Error} />
   
         </Switch>
