@@ -6,7 +6,8 @@ export class ClassCount extends Component {
       super(props)
     
       this.state = {
-         count: 0
+         count: 0,
+         name: ''
       }
     }
 
@@ -18,7 +19,12 @@ export class ClassCount extends Component {
 
     //se charge a chaque changement de props ou state
     componentDidUpdate(prevProps, prevState) { 
-        document.title =`vous avez cliqué ${this.state.count} fois`
+
+        if (this.state.count !== prevState.count) {
+          
+          console.log("update du titre")
+          document.title =`vous avez cliqué ${this.state.count} fois`
+        }
 
     } 
 
@@ -27,6 +33,12 @@ export class ClassCount extends Component {
       <div>
           <h1>{this.state.count}</h1>
           <button onClick={()=>this.setState({count : this.state.count +1})}>Cliquer</button>
+          <input type="text" value={this.state.name} onChange={(e)=>{ 
+            this.setState({
+              name: e.target.value
+            })
+            }}/>
+
       </div>
     )
   }
